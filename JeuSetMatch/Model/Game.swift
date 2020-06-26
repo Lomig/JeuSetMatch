@@ -12,31 +12,30 @@ import Foundation
 import UIKit
 
 enum Player {
-    case one, two
+	case one, two
 }
 
 class Game {
-
-    // MARK: - Properties
+	// MARK: - Properties
     private static let points = [0, 15, 30, 40]
     var scores = [Player.one: 0, Player.two: 0]
     var winner: Player?
     var isOver: Bool {
-        return winner != nil
+		return winner != nil
     }
 
     // MARK: - Methods
     func incrementScore(forPlayer player: Player) {
-        if let score = scores[player], let scoreIndex = Game.points.index(of: score) {
-            if score < 30 {
-                scores[player] = Game.points[scoreIndex + 1]
-            } else {
-                end(withWinner: player)
-            }
+		if let score = scores[player], let scoreIndex = Game.points.index(of: score) {
+			if score < 40 {
+				scores[player] = Game.points[scoreIndex + 1]
+			} else {
+				end(withWinner: player)
+			}
         }
     }
 
     private func end(withWinner winner: Player) {
-        self.winner = winner
+		self.winner = winner
     }
 }
